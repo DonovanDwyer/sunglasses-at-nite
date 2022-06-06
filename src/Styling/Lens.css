@@ -1,0 +1,36 @@
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(213px, 1fr));
+    grid-gap: 1rem 1rem;
+    grid-auto-rows: 250px;
+    grid-auto-flow: dense;
+    list-style-type: none;
+}
+
+.image-container {
+    overflow: hidden;
+}
+
+.image-container > img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.gallery > li {
+    width: 200px;
+    height: 200px;
+    place-self: center;
+    padding: 30px 27px;
+}
+
+.gallery li:hover, li.selected {
+    background-color: gray;
+}
+
+.gallery div.thumbnail-text-wrapper {
+    font-weight: 100;
+    font-size: 15px;
+    line-height: 2;
+    text-align: center;
+}

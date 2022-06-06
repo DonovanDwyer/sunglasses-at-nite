@@ -1,0 +1,35 @@
+* {
+    padding: 0;
+    margin: 0
+}
+
+.lens-frame {
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    grid-template-columns: [sidebar-start] 330px [sidebar-end] auto [end];
+    grid-template-rows: [browbar-start] 40px [browbar-end] auto [bottom];
+}
+
+.brow-bar {
+    background-color: hsla(242,20%,25%,1);
+    color: hsla(232,75%,95%,1);
+    font-size: .6rem;
+    grid-column: sidebar-end / end;
+    grid-row: browbar-start / browbar-end;
+}
+
+.left-temple {
+    background-color: hsla(232,15%,15%,1);
+    grid-column: sidebar-start/ sidebar-end;
+    grid-row: browbar-start / bottom;
+}
+
+.lens {
+    background-color: #caccd6;
+    grid-column: sidebar-end / end;
+    grid-row: browbar-end / bottom;
+    height: 100%;
+    padding: 40px 12px;
+    overflow-y: auto;
+}
