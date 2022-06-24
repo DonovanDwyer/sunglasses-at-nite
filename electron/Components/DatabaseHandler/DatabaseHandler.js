@@ -230,19 +230,23 @@ const getFileData = async (dir, metadata, type='VIDEO') => {
             {field_name: 'last_accessed', field_value: metadata.atime.toString()}
         ]
         if (type === 'VIDEO') {
-            let fileSystemHandler = new FileSystemHandler();
-            let videoMetadata = await fileSystemHandler.videoMetadata(dir);
-            videoMetadata = JSON.parse(videoMetadata.stdout);
-            const formatMetadata = videoMetadata.format;
-            const streamMetadata = videoMetadata.streams[0];
-            fileMetadata.push({field_name: 'duration', field_value: formatMetadata.duration});
-            fileMetadata.push({field_name: 'format', field_value: formatMetadata.format_long_name});
-            fileMetadata.push({field_name: 'framerate', field_value: streamMetadata.r_frame_rate});
-            fileMetadata.push({field_name: 'bitrate', field_value: streamMetadata.bit_rate});
-            fileMetadata.push({field_name: 'height', field_value: streamMetadata.height});
-            fileMetadata.push({field_name: 'width', field_value: streamMetadata.width});
-            fileMetadata.push({field_name: 'aspect_ratio', field_value: streamMetadata.display_aspect_ratio});
-            fileMetadata.push({field_name: 'codec', field_value: streamMetadata.codec_long_name});
+            try {
+                let fileSystemHandler = new FileSystemHandler();
+                let videoMetadata = await fileSystemHandler.videoMetadata(dir);
+                videoMetadata = JSON.parse(videoMetadata.stdout);
+                const formatMetadata = videoMetadata.format;
+                const streamMetadata = videoMetadata.streams[0];
+                fileMetadata.push({field_name: 'duration', field_value: formatMetadata.duration});
+                fileMetadata.push({field_name: 'format', field_value: formatMetadata.format_long_name});
+                fileMetadata.push({field_name: 'framerate', field_value: streamMetadata.r_frame_rate});
+                fileMetadata.push({field_name: 'bitrate', field_value: streamMetadata.bit_rate});
+                fileMetadata.push({field_name: 'height', field_value: streamMetadata.height});
+                fileMetadata.push({field_name: 'width', field_value: streamMetadata.width});
+                fileMetadata.push({field_name: 'aspect_ratio', field_value: streamMetadata.display_aspect_ratio});
+                fileMetadata.push({field_name: 'codec', field_value: streamMetadata.codec_long_name});
+            } catch (error) {
+                console.error(error);
+            }
         }
         const newArr = [];
         for (const fm of fileMetadata){

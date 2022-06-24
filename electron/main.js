@@ -23,7 +23,7 @@ const {
 const createWindow = () => {
     const win = new BrowserWindow({
       show: false,
-      titleBarStyle: 'hidden',
+      // titleBarStyle: 'hidden',
       webPreferences: {
         preload: path.join(__dirname, 'preload.js')
       }

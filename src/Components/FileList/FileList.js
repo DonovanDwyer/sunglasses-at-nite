@@ -4,9 +4,8 @@ import { DetailPane } from '../DetailPane';
 
 function ListItem({ file, columns, selection, isSelected }){
     const selectStyle = { backgroundColor: 'red' };
-    console.log(file);
     return (
-        <li 
+        <li
             onClick={() => selection(file)}
             style={isSelected ? selectStyle : {}}
         >
