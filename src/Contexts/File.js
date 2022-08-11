@@ -10,8 +10,6 @@ const FileProvider = ({ children }) => {
 
     useEffect(() => {
         const fetchFiles = async () => {
-            // For now, this function will just return a list of all videos in the Downloads folder
-            // const dir = '/Users/donovandwyer/Downloads';
             let dir;
             if (window.navigator.appVersion.includes('Windows')){
                 dir = "E:\\The Big Guns\\torrents";
